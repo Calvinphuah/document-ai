@@ -8,9 +8,11 @@ load_dotenv()
 
 # Configuration
 project_id = "wtp-dockets-app"
-location = "us"  # Processor location, e.g., 'us' or 'eu'
+location = "us"
 file_path = "./data/ams.pdf"
-processor_id = os.getenv("PROCESSOR_ID") 
+# Custom processor
+processor_id = os.getenv("PROCESSOR_ID")
+# processor_display_name = "doc_ai_processor"
 
 def quickstart(project_id: str, location: str, file_path: str, processor_id: str):
     if not processor_id:
@@ -22,8 +24,22 @@ def quickstart(project_id: str, location: str, file_path: str, processor_id: str
     # Initialize the Document AI client
     client = documentai.DocumentProcessorServiceClient(client_options=opts)
 
-    # Define the processor resource name
+    # Define the processor resource name for custom processor
     processor_name = f"projects/{project_id}/locations/{location}/processors/{processor_id}"
+
+    # Using Google pretrained DOC AI models
+    # parent = client.common_location_path(project_id, location)
+
+    # processor = client.create_processor(
+    #     parent=parent,
+    #     processor=documentai.Processor(
+    #         type_="INVOICE_PROCESSOR",  # Refer to https://cloud.google.com/document-ai/docs/create-processor for how to get available processor types
+    #         display_name=processor_display_name,
+    #     ),
+    # )
+
+    # # If using pretrained processors
+    # processor_name = processor.name
 
     # Read the file into memory
     with open(file_path, "rb") as image:
