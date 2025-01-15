@@ -1,0 +1,56 @@
+{
+    "invoice_id": "2767",
+    "net_amount": "4669.77",
+    "invoice_date": "2021-12-06",
+    "total_tax_amount": "126.08",
+    "total_amount": "4795.85",
+    "receiver_name": "Martin Colby",
+    "invoice_type": "invoice_statement",
+    "supplier_email": "sales@amnoshsuppliers.com",
+    "supplier_address": "9291 Proin Road Lake Charles, ME-11292",
+    "ship_to_address": "45 Lightning Road, Arizona, AZ 88776",
+    "currency": "USD",
+    "ship_to_name": "Johnny Patel Abcxyz Traders",
+    "supplier_name": "AMNOSH",
+    "supplier_phone": "123-456-7890",
+    "supplier_website": "www.amnoshsuppliers.com",
+    "receiver_address": "45 Lightning Road, Arizona, AZ 88776",
+    "line_items": [
+        {
+            "line_item/quantity": "1",
+            "line_item/description": "Hitachi Trans Fluid - Quart",
+            "line_item/unit_price": "876",
+            "line_item/amount": "876"
+        },
+        {
+            "line_item/quantity": "1",
+            "line_item/description": "4X189 Powerlink Belt",
+            "line_item/unit_price": "567.87",
+            "line_item/amount": "567.87"
+        },
+        {
+            "line_item/quantity": "3",
+            "line_item/description": "3-Planetary Gear System",
+            "line_item/unit_price": "456.82",
+            "line_item/amount": "1370.46"
+        },
+        {
+            "line_item/quantity": "3",
+            "line_item/description": "D2 Heavy Duty Fluid",
+            "line_item/unit_price": "345.06",
+            "line_item/amount": "1035.18"
+        },
+        {
+            "line_item/quantity": "2",
+            "line_item/description": "Hydraullic Press-25 Tons",
+            "line_item/unit_price": "56.09",
+            "line_item/amount": "112.18"
+        },
+        {
+            "line_item/quantity": "2",
+            "line_item/unit_price": "354.04",
+            "line_item/amount": "708.08",
+            "line_item/description": "Optional: HMT Machine"
+        }
+    ]
+}

@@ -1,3 +1,4 @@
+import json
 from google.api_core.client_options import ClientOptions
 from google.cloud import documentai
 from dotenv import load_dotenv
@@ -7,12 +8,11 @@ import os
 load_dotenv()
 
 # Configuration
-project_id = "wtp-dockets-app"
+project_id = os.getenv("PROJECT_ID")
 location = "us"
 file_path = "./data/ams.pdf"
 # Custom processor
 processor_id = os.getenv("PROCESSOR_ID")
-# processor_display_name = "doc_ai_processor"
 
 def quickstart(project_id: str, location: str, file_path: str, processor_id: str):
     if not processor_id:
@@ -27,19 +27,22 @@ def quickstart(project_id: str, location: str, file_path: str, processor_id: str
     # Define the processor resource name for custom processor
     processor_name = f"projects/{project_id}/locations/{location}/processors/{processor_id}"
 
-    # Using Google pretrained DOC AI models
+    # Uncomment this section if you want to use or create a Google pre-trained Document AI processor.
+    # The code below demonstrates how to create a processor of a specific type, such as "INVOICE_PROCESSOR".
+    # https://cloud.google.com/document-ai/docs/create-processor for available processor types.
+
     # parent = client.common_location_path(project_id, location)
 
     # processor = client.create_processor(
     #     parent=parent,
     #     processor=documentai.Processor(
-    #         type_="INVOICE_PROCESSOR",  # Refer to https://cloud.google.com/document-ai/docs/create-processor for how to get available processor types
+    #         type_="INVOICE_PROCESSOR",  # Replace with the desired processor type
     #         display_name=processor_display_name,
     #     ),
     # )
 
-    # # If using pretrained processors
-    # processor_name = processor.name
+    # processor_name = processor.name  # Use the created processor's name
+
 
     # Read the file into memory
     with open(file_path, "rb") as image:
@@ -61,8 +64,13 @@ def quickstart(project_id: str, location: str, file_path: str, processor_id: str
     # Extract and display key-value pairs
     print("Extracting key-value pairs:")
     key_value_pairs = extract_key_value_pairs(document)
-    for key, value in key_value_pairs.items():
-        print(f"{key}: {value}")
+
+    # Write the extracted data to a JSON file
+    output_file = "extracted_data.json"
+    with open(output_file, "w", encoding="utf-8") as json_file:
+        json.dump(key_value_pairs, json_file, indent=4, ensure_ascii=False)
+
+    print(f"Data successfully written to {output_file}")
 
 def extract_key_value_pairs(document):
     key_value_pairs = {}
