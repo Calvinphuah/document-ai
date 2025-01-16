@@ -33,9 +33,9 @@ To run this project, ensure you have the following:
 
 1.  Clone the repository:
 
-    ```
-    git clone <repository-url>
-    cd <repository-folder>
+    ```bash
+    git clone https://github.com/Calvinphuah/DocumentAI.git
+    cd DocumentAI
     ```
 
 2.  Install the required Python libraries:
